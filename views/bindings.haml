@@ -1,0 +1,10 @@
+-@bindings.each do |binding|
+  %div(class="binding")
+    %strong Queue:
+    #{binding["queue"]}
+    %br
+    %strong Exchange:
+    #{binding["exchange"]}
+    %br
+    %strong From:
+    #{binding["from_queue"]}

@@ -3,6 +3,7 @@ html {
 }
 
 #container{
+    padding: 10px 2px;
     position: relative;
     top: 20px;
     float: left;
@@ -30,11 +31,12 @@ td, th {
 }
 
 #menu{
-    width: 200px;
+    width: 150px;
     float: left;
 }
 
 ul {
+    padding-left: 15px;
     list-style-type: none;
 }
 
@@ -50,4 +52,8 @@ ul {
 
 #content{
     float: left;
+}
+
+div.binding{
+    margin-top: 10px;
 }

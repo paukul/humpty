@@ -12,7 +12,7 @@ class Server
   end
   
   def self.bindings
-    
+    get("/bindings")["bindings"]
   end
 end
 
@@ -23,4 +23,9 @@ end
 get '/queues/?' do
   @queues = Server.queues
   haml :queues
+end
+
+get '/bindings' do
+  @bindings = Server.bindings
+  haml :bindings
 end
