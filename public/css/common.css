@@ -1,11 +1,37 @@
-body {
+html {
     background: #333;
 }
 
 #container{
+    float: left;
+    width: 100%;
     background: #eee;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     -webkit-box-shadow: 0px 0px 5px #333;
     -moz-box-shadow: 0px 0px 5px #333;
+}
+
+table {
+    margin-top: 10px;
+    border-collapse: collapse;
+}
+
+th{
+    background: #666;
+    color: #eee;
+}
+
+td, th {
+    padding: 0 4px;
+    border: 1px solid #333;
+}
+
+#menu{
+    width: 200px;
+    float: left;
+}
+
+#content{
+    float: left;
 }
