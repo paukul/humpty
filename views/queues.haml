@@ -1,0 +1,8 @@
+%table
+  %tr
+    - @queues.first.keys.each do |key|
+      %th=key
+  - @queues.each do |queue|
+    %tr
+      - queue.each_value do |value|
+        %td=value
