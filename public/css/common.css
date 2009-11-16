@@ -1,8 +1,10 @@
 html {
-    background: #333;
+    background: #71B9E6;
 }
 
 #container{
+    position: relative;
+    top: 20px;
     float: left;
     width: 100%;
     background: #eee;
@@ -24,12 +26,26 @@ th{
 
 td, th {
     padding: 0 4px;
-    border: 1px solid #333;
+    border: 1px solid #ccc;
 }
 
 #menu{
     width: 200px;
     float: left;
+}
+
+ul {
+    list-style-type: none;
+}
+
+#menu a {
+    text-decoration: none;
+    color: #E75A26;
+    font-weight: bold;
+}
+
+#menu a:hover {
+   color: #3A65AE; 
 }
 
 #content{

@@ -7,15 +7,15 @@
     %script{ :type => "text/javascript", :src => "/js/tellerrand.js" }
     %script{ :type => "text/javascript"}
     %title
-      \.::Tellerrand::.
+      \.::AMQP::.
   %body
     #container
       #menu
         %ul
           %li
-            %a asdf
+            %a(href="queues") Queues
           %li
-            %a asdf
+            %a(href="bindings") Bindings
             
       #content
         =yield
