@@ -1,13 +1,35 @@
+* {
+    margin: 0;
+    padding: 0;
+    color: #111;
+}
+
 html {
     background: #71B9E6;
+    font-family: Helvetica;
+}
+
+h1, h2, h3 {
+    margin: 2px;
+}
+
+h1 {
+    margin-bottom: 10px;
+    color: #3A65AE;
+    font-size: 26px;
+}
+
+h2 {
+    font-size: 18px;
 }
 
 #container{
     padding: 10px 2px;
+    margin: 10px 20px;
     position: relative;
     top: 20px;
     float: left;
-    width: 100%;
+    width: 95%;
     background: #eee;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
@@ -23,11 +45,16 @@ table {
 th{
     background: #666;
     color: #eee;
+    font-size: 12px;
+    padding: 3px 4px;
 }
 
 td, th {
-    padding: 0 4px;
     border: 1px solid #ccc;
+}
+
+td {
+  padding: 0 4px;
 }
 
 #menu{
@@ -35,19 +62,23 @@ td, th {
     float: left;
 }
 
-ul {
+#menu ul {
     padding-left: 15px;
     list-style-type: none;
 }
 
+ul {
+    padding-left: 35px;
+}
+
 #menu a {
     text-decoration: none;
-    color: #E75A26;
+    color: #3A65AE;
     font-weight: bold;
 }
 
 #menu a:hover {
-   color: #3A65AE; 
+   color: #A3C3D6; 
 }
 
 #content{

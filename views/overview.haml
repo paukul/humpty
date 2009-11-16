@@ -1,0 +1,19 @@
+%h1 General
+%h2 Applications
+%ul
+  -@control["status"][0]["applications"].each do |application|
+    %li=application
+%h2 Nodes
+%ul
+  -@control["status"][0]["nodes"].each do |node|
+    %li=node
+
+%h2 Running Nodes
+%ul
+  -@control["status"][0]["running_nodes"].each do |node|
+    %li=node
+
+%h1 Queues
+%ul
+  -@queues.each do |queue|
+    %li==#{queue["name"]} (#{queue["messages"]})

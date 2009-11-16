@@ -14,10 +14,16 @@ class Server
   def self.bindings
     get("/bindings")["bindings"]
   end
+  
+  def self.control
+    get("/control")
+  end
 end
 
 get '/' do
-  redirect "/queues"
+  @control = Server.control
+  @queues = Server.queues
+  haml :overview
 end
 
 get '/queues/?' do
