@@ -8,10 +8,11 @@ Humpty will be a Sinatra Application which provides access to a RabbitMQ server.
 
 Quickstart
 ==========
-1. install bundler (gem install bundler)
-2. gem bundle
-3. ruby humpty.rb
-4. visit localhost:4567 in your webbrowser
+1. install [alice](http://github.com/auser/alice) and start it
+2. install bundler (gem install bundler)
+3. gem bundle
+4. ruby humpty.rb
+5. visit localhost:4567 in your webbrowser
 
 FAQ
 ===
