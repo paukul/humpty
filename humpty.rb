@@ -58,3 +58,7 @@ helpers do
     YAML.load_file('config/queue_thresholds.yml') || {}
   end
 end
+
+error Errno::ECONNREFUSED do
+  haml 'Could not connect to the <a href="http://github.com/auser/alice">Alice</a> Server. Please make sure it\'s installed and running!'
+end
