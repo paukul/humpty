@@ -38,7 +38,7 @@ end
 
 get '/config' do
   @queues = Server.queues
-  @config = YAML.load_file('config/queue_thresholds.yml') || {}
+  @config = queue_config
   haml :config
 end
 
@@ -47,4 +47,14 @@ post '/config' do
     file.puts params["queues"].to_yaml
   end
   redirect '/config'
+end
+
+helpers do
+  def class_for_queue(queue)
+    queue_config[queue["name"]].to_i < queue["messages"].to_i ? "critical_queue" : nil
+  end
+  
+  def queue_config
+    YAML.load_file('config/queue_thresholds.yml') || {}
+  end
 end

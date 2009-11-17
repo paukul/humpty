@@ -71,6 +71,12 @@ table.queues td {
     list-style-type: none;
 }
 
+.critical_queue {
+    color: red;
+    background: transparent url('../img/error.png') no-repeat;
+    padding-left: 20px;
+}
+
 ul {
     padding-left: 35px;
 }

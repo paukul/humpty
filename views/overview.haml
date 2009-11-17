@@ -16,4 +16,4 @@
 %h1 Queues
 %ul
   -@queues.each do |queue|
-    %li==#{queue["name"]} (#{queue["messages"]})
+    %li(class="#{class_for_queue(queue)}")==#{queue["name"]} ( #{queue["messages"]}/#{queue_config[queue["name"]]} )
