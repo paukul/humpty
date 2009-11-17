@@ -26,4 +26,4 @@ A: c'mon are you kiddin me? I've just pushed the first couple of LOC. haha, try 
 
 Q: alice doesnt start correctly :(<br/>
 A: Have a look at alice project page. helped me a lot.<br/>
-   (I had to start it with `./start.sh -sname alice -setcookie "MYERLANGCOOKIE"` which is probably the worst way to do but...)
+   (I, for example, had to start it with `./start.sh -sname alice -setcookie "MYERLANGCOOKIE"`)
