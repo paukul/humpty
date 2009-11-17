@@ -1,0 +1,21 @@
+%p
+  Set thresholds for the maximum number of messages in a Queue. If the number gets exceedet, a warning is displayed.
+  %br
+  %small (actually, there is nothing displayed yet ;)
+
+%form(method="post" action="config")
+  %table
+    %tr
+      %th
+        queue
+      %th
+        threshold
+    -@queues.each_with_index do |queue, index|
+      %tr
+        %td
+          %label(for="queue_threshold_#{index}")=queue["name"]
+        %td
+          %input(id="queue_threshold_#{index}" name="queue_threshold_#{index}")
+    %tr
+      %td(colspan=2)
+        %input(type="submit")

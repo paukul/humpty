@@ -35,3 +35,8 @@ get '/bindings' do
   @bindings = Server.bindings
   haml :bindings
 end
+
+get '/config' do
+  @queues = Server.queues
+  haml :config
+end

@@ -4,6 +4,10 @@
     color: #111;
 }
 
+p {
+    margin-bottom: 10px;
+}
+
 html {
     background: #71B9E6;
     font-family: Helvetica;
@@ -37,23 +41,23 @@ h2 {
     -moz-box-shadow: 0px 0px 5px #333;
 }
 
-table {
+table.queues {
     margin-top: 10px;
     border-collapse: collapse;
 }
 
-th{
+table.queues th{
     background: #666;
     color: #eee;
     font-size: 12px;
     padding: 3px 4px;
 }
 
-td, th {
+table.queues td, table.queues th {
     border: 1px solid #ccc;
 }
 
-td {
+table.queues td {
   padding: 0 4px;
 }
 
