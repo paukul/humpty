@@ -68,7 +68,7 @@ helpers do
   end
 
   def queue_config
-    File.new(options.queue_threshold_file) unless File.exists?(options.queue_threshold_file)
+    File.open(options.queue_threshold_file, "w") unless File.exists?(options.queue_threshold_file)
     YAML.load_file(options.queue_threshold_file) || {}
   end
 end
