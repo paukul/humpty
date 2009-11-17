@@ -4,7 +4,9 @@ This is a WIP!
 Humpty
 ======
 
-Humpty will be a Sinatra Application which provides access to a RabbitMQ server. It basically Wraps the REST Resources provided by [alice](http://github.com/auser/alice). 
+Humpty will be a Sinatra Application which provides access to a RabbitMQ server. It basically Wraps the REST Resources provided by [alice](http://github.com/auser/alice).
+
+As an addition, it adds the posibility to track queue sizes (graphs for the win!) and to manipulate queues, exchanges and binds (not yet implemented).
 
 Quickstart
 ==========
