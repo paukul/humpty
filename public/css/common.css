@@ -110,3 +110,11 @@ form.config table th{
 form.config table td{
     text-align: right;
 }
+
+#banner {
+    margin: 20px 0px 0px 20px;
+}
+
+#banner h1 {
+    color: #fff;
+}
