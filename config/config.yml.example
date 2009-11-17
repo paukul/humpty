@@ -1,0 +1,3 @@
+alice:
+    base_url: http://localhost
+    port: 9999
