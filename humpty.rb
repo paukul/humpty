@@ -2,6 +2,8 @@ require 'vendor/gems/environment'
 require 'sinatra'
 Bundler.require_env
 
+set :queue_threshold_file, 'config/queue_thresholds.yml'
+
 def config
   begin
     @config ||= YAML.load_file('config/config.yml')
@@ -53,7 +55,8 @@ get '/config' do
 end
 
 post '/config' do
-  File.open('config/queue_thresholds.yml', 'w') do |file|
+  puts params.inspect
+  File.open(options.queue_threshold_file, 'w') do |file|
     file.puts params["queues"].to_yaml
   end
   redirect '/config'
@@ -65,7 +68,8 @@ helpers do
   end
 
   def queue_config
-    YAML.load(File.open('config/queue_thresholds.yml', "w+")) || {}
+    File.new(options.queue_threshold_file) unless File.exists?(options.queue_threshold_file)
+    YAML.load_file(options.queue_threshold_file) || {}
   end
 end
 
