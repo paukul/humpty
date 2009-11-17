@@ -63,9 +63,9 @@ helpers do
   def class_for_queue(queue)
     queue_config[queue["name"]].to_i < queue["messages"].to_i ? "critical_queue" : nil
   end
-  
+
   def queue_config
-    YAML.load_file('config/queue_thresholds.yml') || {}
+    YAML.load(File.open('config/queue_thresholds.yml', "w+")) || {}
   end
 end
 
