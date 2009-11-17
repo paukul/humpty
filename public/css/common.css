@@ -29,9 +29,8 @@ h2 {
 
 #container{
     padding: 10px 2px;
-    margin: 10px 20px;
+    margin: 10px 20px 0px 20px;
     position: relative;
-    top: 20px;
     float: left;
     width: 95%;
     background: #eee;
@@ -117,4 +116,18 @@ form.config table td{
 
 #banner h1 {
     color: #fff;
+}
+
+#banner ul {
+    list-style-type: none;
+}
+
+#banner li {
+    display: inline;
+}
+
+#banner a{
+    display: inline-block;
+    padding: 0px 5px;
+    margin-right: 5px;
 }

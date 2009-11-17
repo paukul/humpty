@@ -7,10 +7,15 @@
     %script{ :type => "text/javascript", :src => "/js/tellerrand.js" }
     %script{ :type => "text/javascript"}
     %title
-      Humpty
+      Humpty (Server #{@server})
   %body
     #banner
       %h1 Humpty
+      %ul
+        %li Server: 
+        -@servers.each do |server|
+          %li
+            %a(href="?server=#{server}")=server
     #container
       #menu
         %ul
