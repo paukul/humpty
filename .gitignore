@@ -2,3 +2,4 @@ vendor/gems/*
 !vendor/gems/cache/
 bin/*
 .DS_Store
+config/queue_thresholds.yml

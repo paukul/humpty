@@ -3,7 +3,7 @@
   %br
   %small (actually, there is nothing displayed yet ;)
 
-%form(method="post" action="config")
+%form(method="post" action="config" class="config")
   %table
     %tr
       %th
@@ -15,7 +15,7 @@
         %td
           %label(for="queue_threshold_#{index}")=queue["name"]
         %td
-          %input(id="queue_threshold_#{index}" name="queue_threshold_#{index}")
+          %input(type="text" id="queue_threshold_#{index}" name="queues[#{queue["name"]}]" value="#{@config[queue["name"]] || 0}")
     %tr
       %td(colspan=2)
         %input(type="submit")

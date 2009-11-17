@@ -92,3 +92,15 @@ ul {
 div.binding{
     margin-top: 10px;
 }
+
+form.config input[type="text"]{
+    width: 50px;
+}
+
+form.config table th{
+    text-align: left;
+}
+
+form.config table td{
+    text-align: right;
+}

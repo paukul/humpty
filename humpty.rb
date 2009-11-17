@@ -38,5 +38,13 @@ end
 
 get '/config' do
   @queues = Server.queues
+  @config = YAML.load_file('config/queue_thresholds.yml') || {}
   haml :config
+end
+
+post '/config' do
+  File.open('config/queue_thresholds.yml', 'w') do |file|
+    file.puts params["queues"].to_yaml
+  end
+  redirect '/config'
 end
