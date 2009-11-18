@@ -4,13 +4,17 @@
     color: #111;
 }
 
+a {
+    font-weight: bold;
+}
+
 p {
     margin-bottom: 10px;
 }
 
 html {
     background: #71B9E6;
-    font-family: Helvetica;
+    font-family: Tahoma, Verdana, Helvetica;
 }
 
 h1, h2, h3 {
@@ -89,7 +93,6 @@ ul {
     margin-top: 2px;
     width: 100%;
     border-bottom: 2px solid #E9E9E9;
-    font-weight: bold;
 }
 
 #menu a:hover {
@@ -139,7 +142,9 @@ form.config table td{
 }
 
 #banner h1 {
+    font-family: Times;
     color: #fff;
+    font-size: 36px;
 }
 
 #banner ul {

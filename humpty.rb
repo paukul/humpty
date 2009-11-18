@@ -58,6 +58,10 @@ error Errno::ECONNREFUSED do
   haml 'Could not connect to the <a href="http://github.com/auser/alice">Alice</a> Server. Please make sure it\'s installed and running!'
 end
 
+error do
+  haml "%strong Something unexpected happened\n#exception #{request.env['sinatra.error'].message}"
+end
+
 not_found do
   haml "#failbunny\n%img(src='img/bunny.jpg')"
 end
