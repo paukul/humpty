@@ -14,7 +14,7 @@
     %li=node
 
 %h1 Queues
-%ul
+%ul(class="queues")
   -@queues.each do |queue|
     %li(class="#{class_for_queue(queue)}")
       #{queue["name"]} ( #{queue["messages"]}/#{queue_config[queue["name"]]} )

@@ -8,7 +8,7 @@ class Server
   end
 
   def queues
-    requested_attributes = %w(name durable auto_delete arguments messages_ready messages_unacknowledged messages_uncommitted messages acks_uncommitted consumers transactions memory)
+    requested_attributes = %w(name durable auto_delete messages_ready messages_unacknowledged messages_uncommitted messages acks_uncommitted consumers transactions memory)
     get("/queues/root/#{requested_attributes.join('/')}")["queues"]
   end
 
