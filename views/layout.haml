@@ -9,14 +9,14 @@
     %title
       Humpty (#{@server})
   %body
-    #banner
-      %h1 Humpty
-      %ul
-        %li Server: 
-        -@servers.each do |server|
-          %li
-            %a(href="?server=#{server}")=server
     #container
+      #banner
+        %h1 Humpty
+        %ul
+          %li Server: 
+          -@servers.each do |server|
+            %li
+              %a(href="?server=#{server}" class="#{'active_server' if server == @server.to_s}")=server
       #menu
         %ul
           %li
