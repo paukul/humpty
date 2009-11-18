@@ -5,6 +5,7 @@ gem "configuration"
 gem "launchy"
 gem "httparty"
 gem "haml"
+gem "carrot"
 
 source "http://gemcutter.org"
 

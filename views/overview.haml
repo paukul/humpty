@@ -16,4 +16,6 @@
 %h1 Queues
 %ul
   -@queues.each do |queue|
-    %li(class="#{class_for_queue(queue)}")==#{queue["name"]} ( #{queue["messages"]}/#{queue_config[queue["name"]]} )
+    %li(class="#{class_for_queue(queue)}")
+      #{queue["name"]} ( #{queue["messages"]}/#{queue_config[queue["name"]]} )
+      %a(href="/queues/#{queue["name"]}/delete") delete

@@ -35,12 +35,21 @@ get '/config' do
   haml :config
 end
 
+get '/queues/:name/delete' do
+  carrot.queue(params[:name]).delete
+  redirect '/'
+end
+
 post '/config' do
   puts params.inspect
   File.open(options.queue_threshold_file, 'w') do |file|
     file.puts params["queues"].to_yaml
   end
   redirect '/config'
+end
+
+def carrot
+  Carrot.new(:host => @server.configuration["rabbitmq"]["host"])
 end
 
 helpers do
