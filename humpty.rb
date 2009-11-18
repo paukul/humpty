@@ -8,8 +8,9 @@ set :sessions, true
 
 before do
   @servers = Server.configurations.keys
-  session["server"] ||= params["server"] || @servers.first
-  @server = Server.new(session["server"])
+  server_name = params["server"] || session["server"] || @servers.first
+  session["server"] = server_name
+  @server = Server.new(server_name)
 end
 
 get '/' do
