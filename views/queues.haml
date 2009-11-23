@@ -1,8 +1,38 @@
-%table(class="queues")
-  %tr
-    - @queues.first.keys.each do |key|
-      %th=key
-  - @queues.each do |queue|
-    %tr
-      - queue.each_value do |value|
-        %td=value
+%h1 Queues
+-@queues.each do |queue|
+  .status
+    %h2=queue["name"]
+    %table
+      %tr
+        %td Messages:
+        %td= queue["messages"]
+      %tr
+        %td Messages (Unack):
+        %td= queue["messages_unacknowledged"]
+      %tr
+        %td Messages (Rdy):
+        %td= queue["messages_ready"]
+      %tr
+        %td Transactions:
+        %td= queue["transactions"]
+      %tr
+        %td Memory:
+        %td= queue["memory"]
+      %tr
+        %td Auto Delete:
+        %td= queue["auto_delete"]
+      %tr
+        %td Acks (Uncommited):
+        %td= queue["acks_uncommitted"]
+      %tr
+        %td Messages (Uncommited):
+        %td= queue["messages_uncommitted"]
+      %tr
+        %td Durable:
+        %td= queue["durable"]
+      %tr
+        %td Consumers:
+        %td= queue["consumers"]
+      %tr
+        %td Vhost:
+        %td= queue["vhost"]

@@ -2,6 +2,7 @@ require 'vendor/gems/environment'
 require 'sinatra'
 Bundler.require_env
 require 'server'
+require 'partials'
 
 set :queue_threshold_file, 'config/queue_thresholds.yml'
 set :sessions, true
@@ -48,11 +49,17 @@ post '/config' do
   redirect '/config'
 end
 
+get '/exchanges/?' do
+  @exchanges = @server.exchanges.reject {|e| e["name"].blank? }
+  haml :exchanges
+end
+
 def carrot
   Carrot.new(:host => @server.configuration["rabbitmq"]["host"])
 end
 
 helpers do
+  include Sinatra::Partials
   def class_for_queue(queue)
     queue_config["#{queue["name"]}_#{@server.id}"].to_i < queue["messages"].to_i ? "critical_queue" : nil
   end

@@ -29,6 +29,10 @@ class Server
      end
   end
 
+  def exchanges
+    get("/exchanges")["exchanges"]
+  end
+
   def configuration
     @configuration ||= self.class.configurations[self.id]
   end
