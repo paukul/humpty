@@ -38,26 +38,6 @@ h2 {
     float: left;
 }
 
-table.queues {
-    margin-top: 10px;
-    border-collapse: collapse;
-}
-
-table.queues th{
-    background: #666;
-    color: #eee;
-    font-size: 12px;
-    padding: 3px 4px;
-}
-
-table.queues td, table.queues th {
-    border: 1px solid #ccc;
-}
-
-table.queues td {
-  padding: 0 4px;
-}
-
 #menu{
     background: #D7D7D7;
     width: 150px;
@@ -183,7 +163,7 @@ form.config table td{
 .status {
     display: inline-block;
     padding: 10px;
-    width: 250px;
+    min-width: 250px;
     border: 1px solid #ccc;
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;

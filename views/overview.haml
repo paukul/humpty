@@ -21,9 +21,14 @@
           -@control["status"][0]["running_nodes"].each do |node|
             %li=node
 
-%h1 Queues
-%ul(class="queues")
-  -@queues.each do |queue|
-    %li(class="#{class_for_queue(queue)}")
-      #{queue["name"]} ( #{queue["messages"]}/#{queue_config[queue["name"]]} )
-      %a(href="/queues/#{queue["name"]}/delete") delete
+.status
+  %h2 Queues
+  %table
+    %tr
+      %td Queues:
+      %td
+        %ul
+          -@queues.each do |queue|
+            %li(class="#{class_for_queue(queue)}")
+              #{queue["name"]} ( #{queue["messages"]}/#{queue_config[queue["name"]]} )
+              %a(href="/queues/#{queue["name"]}/delete") delete
