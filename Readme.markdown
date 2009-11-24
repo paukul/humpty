@@ -36,6 +36,20 @@ Add a configuration entry for every server you wan't to make accessible by humpt
             base_url: http://my.fanzy.host
             port: 9988
 
+Screenshots
+===========
+
+Ok they are ugly, feel free to contribute.... :)
+Just to show some examples:
+
+Exchanges
+---------
+![Exchanges](http://img.skitch.com/20091124-cjb369uj558x6k29mfbj2dkgr5.png)
+
+Overview
+--------
+![Overview](http://img.skitch.com/20091124-j8ryys3bty24fstdh618h4rg4r.png)
+
 FAQ
 ===
 Q: why not use wonderland?<br/>
