@@ -1,5 +1,5 @@
 $(document).ready(function(){
- $('.queues a').click(function(e){
+ $('a.ask').click(function(e){
      return confirm('Are you SURE?');
  });
 });
