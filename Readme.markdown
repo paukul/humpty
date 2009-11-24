@@ -53,7 +53,9 @@ Overview
 FAQ
 ===
 Q: why not use wonderland?<br/>
-A: I suck at Javascript 
+A: Several reasons.. I want to support multiple servers with one interface<br/>
+   I love alice and wonderland. I just wanted to add some features myself and I still suck at erlang :)<br/>
+   and of course, I plan to do more features as the one supported by alice
 
 Q: is humpty already usable?<br/>
 A: c'mon are you kiddin me? I've just pushed the first couple of LOC. haha, try again later
@@ -61,3 +63,6 @@ A: c'mon are you kiddin me? I've just pushed the first couple of LOC. haha, try 
 Q: alice doesnt start correctly :(<br/>
 A: Have a look at alice project page. helped me a lot.<br/>
    (I, for example, had to start it with `./start.sh -sname alice -setcookie "MYERLANGCOOKIE"`)
+   
+Q: NO TESTS?<br/>
+A: Aaah, you got me... for fun and profit! I'll add them soon, promise :)
