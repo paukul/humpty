@@ -21,15 +21,15 @@ Quickstart
 
 Configuration
 =============
-Add a configuration entry for every server you wan't to make accessible by humpty. A alice node needs to run on every Server which is added in the configuration file.
+Add a configuration entry for every server you wan't to make accessible by humpty. A alice node needs to run on every Server which is added in the configuration file. The name for the broker can be chosen freely (as long as it is unique) since it is only used by humpty to distinguish the several servers and for the web frontend.
 
-    broker2:
+    name_of_broker1:
         rabbitmq:
             host: localhost
         alice:
             base_url: http://localhost
             port: 9999
-    broker2:
+    name_of_broker2:
         rabbitmq:
             host: my.fanzy.host
         alice:
