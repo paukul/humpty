@@ -39,7 +39,7 @@ end
 
 get '/config' do
   @queues = @server.queues
-  @config = queue_config
+  @config = queue_config[@server.id] || {}
   haml :config
 end
 
@@ -49,9 +49,9 @@ get '/queues/:name/delete' do
 end
 
 post '/config' do
-  puts params.inspect
+  queue_config.update(@server.id => params["queues"])
   File.open(options.queue_threshold_file, 'w') do |file|
-    file.puts params["queues"].to_yaml
+    file.puts queue_config.to_yaml
   end
   redirect '/config'
 end
@@ -68,12 +68,12 @@ end
 helpers do
   include Sinatra::Partials
   def class_for_queue(queue)
-    queue_config["#{queue["name"]}_#{@server.id}"].to_i < queue["messages"].to_i ? "critical_queue" : nil
+    queue_config[@server.id][queue["name"]].to_i < queue["messages"].to_i ? "critical_queue" : nil
   end
 
   def queue_config
     File.open(options.queue_threshold_file, "w") unless File.exists?(options.queue_threshold_file)
-    YAML.load_file(options.queue_threshold_file) || {}
+    @queue_config ||= (YAML.load_file(options.queue_threshold_file) || {})
   end
 end
 
