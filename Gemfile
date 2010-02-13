@@ -1,12 +1,10 @@
+source "http://gemcutter.org"
+
 gem "rack"
-gem "sinatra"
-gem "shotgun"
+gem "sinatra", :require => nil
+gem "shotgun", :require => nil
 gem "configuration"
 gem "launchy"
 gem "httparty"
 gem "haml"
 gem "carrot"
-
-source "http://gemcutter.org"
-
-disable_system_gems

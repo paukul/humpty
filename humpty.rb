@@ -1,6 +1,13 @@
-require 'vendor/gems/environment'
+begin
+  require File.expand_path('../.bundle/environment', __FILE__)
+rescue LoadError
+  require "rubygems"
+  require "bundler"
+  Bundler.setup
+end
+
 require 'sinatra'
-Bundler.require_env
+Bundler.require
 require 'server'
 require 'partials'
 

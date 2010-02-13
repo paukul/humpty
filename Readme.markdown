@@ -14,7 +14,7 @@ Quickstart
 ==========
 1. install [alice](http://github.com/auser/alice) and start it
 2. install bundler (gem install bundler)
-3. gem bundle
+3. bundle install
 4. copy the default config from config/config.yml.default to config/config.yml and edit the defaults as needed
 4. ruby humpty.rb
 5. visit localhost:4567 in your webbrowser
