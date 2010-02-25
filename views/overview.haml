@@ -30,5 +30,5 @@
         %ul
           -@queues.each do |queue|
             %li(class="#{class_for_queue(queue)}")
-              #{queue["name"]} (#{queue["messages"]}/#{queue_config[@server.id][queue["name"]] || 0})
+              #{queue["name"]} (#{queue["messages"]}/#{@message_threshold || 0})
               %a(href="/queues/#{queue["name"]}/delete" class="ask") delete

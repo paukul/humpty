@@ -68,7 +68,8 @@ end
 helpers do
   include Sinatra::Partials
   def class_for_queue(queue)
-    queue_config[@server.id][queue["name"]].to_i < queue["messages"].to_i ? "critical_queue" : nil
+    @message_threshold = queue_config[@server.id][queue["name"]].to_i rescue 0
+    @message_threshold < queue["messages"].to_i ? "critical_queue" : nil
   end
 
   def queue_config
