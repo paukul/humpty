@@ -6,12 +6,16 @@ rescue LoadError
   Bundler.setup
 end
 
-require 'sinatra'
+require 'sinatra/base'
 Bundler.require
 require 'server'
 require 'partials'
 
 class Humpty < Sinatra::Base
+  enable :static
+  disable :run
+  
+  set :public, File.expand_path('../public', __FILE__)
   set :queue_threshold_file, 'config/queue_thresholds.yml'
   set :sessions, true
 
@@ -91,3 +95,5 @@ class Humpty < Sinatra::Base
     haml "#failbunny\n%img(src='img/bunny.jpg')"
   end
 end
+
+Humpty.run! :port => 4567 if $0 == __FILE__
