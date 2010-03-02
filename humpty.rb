@@ -5,95 +5,98 @@ rescue LoadError
   require "bundler"
   Bundler.setup
 end
-
 require 'sinatra/base'
 Bundler.require
-require 'server'
-require 'partials'
 
-class Humpty < Sinatra::Base
-  enable :static
-  disable :run
-  
-  set :public, File.expand_path('../public', __FILE__)
-  set :queue_threshold_file, 'config/queue_thresholds.yml'
-  set :sessions, true
+module Humpty
+  class Error < StandardError; end
 
-  before do
-    @servers = Server.configurations.keys
-    server_name = params["server"] || session["server"] || @servers.first
-    session["server"] = server_name
-    @server = Server.new(server_name)
-  end
+  class App < Sinatra::Base
+    require 'server'
+    require 'partials'
 
-  get '/' do
-    @control = @server.control
-    @queues = @server.queues
-    haml :overview
-  end
+    enable :static
+    disable :run
 
-  get '/queues/?' do
-    @queues = @server.queues
-    haml :queues
-  end
+    set :public, File.expand_path('../public', __FILE__)
+    set :queue_threshold_file, 'config/queue_thresholds.yml'
+    set :sessions, true
 
-  get '/bindings' do
-    @bindings = @server.bindings
-    haml :bindings
-  end
-
-  get '/config' do
-    @queues = @server.queues
-    @config = queue_config[@server.id] || {}
-    haml :config
-  end
-
-  get '/queues/:name/delete' do
-    carrot.queue(params[:name]).delete
-    redirect '/'
-  end
-
-  post '/config' do
-    queue_config.update(@server.id => params["queues"])
-    File.open(options.queue_threshold_file, 'w') do |file|
-      file.puts queue_config.to_yaml
-    end
-    redirect '/config'
-  end
-
-  get '/exchanges/?' do
-    @exchanges = @server.exchanges.reject {|e| e["name"].blank? }
-    haml :exchanges
-  end
-
-  def carrot
-    Carrot.new(:host => @server.configuration["rabbitmq"]["host"])
-  end
-
-  helpers do
-    include Sinatra::Partials
-    def class_for_queue(queue)
-      @message_threshold = queue_config[@server.id][queue["name"]].to_i rescue 0
-      @message_threshold < queue["messages"].to_i ? "critical_queue" : nil
+    before do
+      set_server
     end
 
-    def queue_config
-      File.open(options.queue_threshold_file, "w") unless File.exists?(options.queue_threshold_file)
-      @queue_config ||= (YAML.load_file(options.queue_threshold_file) || {})
+    get '/' do
+      @control = @server.control
+      @queues = @server.queues
+      haml :overview
     end
-  end
 
-  error Errno::ECONNREFUSED do
-    haml 'Could not connect to the <a href="http://github.com/auser/alice">Alice</a> Server. Please make sure it\'s installed and running!'
-  end
+    get '/queues/?' do
+      @queues = @server.queues
+      haml :queues
+    end
 
-  error do
-    haml "%strong Something unexpected happened\n#exception #{request.env['sinatra.error'].message}"
-  end
+    get '/bindings' do
+      @bindings = @server.bindings
+      haml :bindings
+    end
 
-  not_found do
-    haml "#failbunny\n%img(src='img/bunny.jpg')"
+    get '/config' do
+      @queues = @server.queues
+      @config = queue_config[@server.id] || {}
+      haml :config
+    end
+
+    get '/queues/:name/delete' do
+      carrot.queue(params[:name]).delete
+      redirect '/'
+    end
+
+    post '/config' do
+      queue_config.update(@server.id => params["queues"])
+      File.open(options.queue_threshold_file, 'w') do |file|
+        file.puts queue_config.to_yaml
+      end
+      redirect '/config'
+    end
+
+    get '/exchanges/?' do
+      @exchanges = @server.exchanges.reject {|e| e["name"].blank? }
+      haml :exchanges
+    end
+
+    def carrot
+      Carrot.new(:host => @server.configuration["rabbitmq"]["host"])
+    end
+
+    helpers do
+      include Sinatra::Partials
+      def class_for_queue(queue)
+        @message_threshold = queue_config[@server.id][queue["name"]].to_i rescue 0
+        @message_threshold < queue["messages"].to_i ? "critical_queue" : nil
+      end
+
+      def queue_config
+        File.open(options.queue_threshold_file, "w") unless File.exists?(options.queue_threshold_file)
+        @queue_config ||= (YAML.load_file(options.queue_threshold_file) || {})
+      end
+    end
+
+    not_found do
+      haml "#failbunny\n%img(src='img/bunny.jpg')"
+    end
+
+    def set_server(server = nil)
+      @servers = Server.configurations.keys
+      session["server"] = server_name = server || params["server"] || session["server"] || @servers.first
+      begin
+        @server = Server.new(server_name)
+      rescue Server::ConfigurationException
+        set_server(@servers.first)
+      end
+    end
   end
 end
 
-Humpty.run! :port => 4567 if $0 == __FILE__
+Humpty::App.run! :port => 4567 if $0 == __FILE__
