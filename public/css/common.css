@@ -37,11 +37,12 @@ h2 {
     position: relative;
     margin: 0 auto;
     float: left;
+    width: 1180px;
 }
 
 #menu{
     background: #D7D7D7;
-    width: 150px;
+    width: 180px;
     float: left;
     padding: 15px 0;
     -moz-border-radius-topleft: 5px;
@@ -81,11 +82,11 @@ ul {
 }
 
 #content{
-    float: left;
+    width: 900px;
+    float: right;
     background: #eee;
     padding: 30px 50px;
     min-height: 300px;
-    width: 900px;
     -moz-border-radius-topright: 5px;
     -moz-border-radius-bottomleft: 5px;
     -moz-border-radius-bottomright: 5px;
