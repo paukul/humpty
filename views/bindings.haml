@@ -3,10 +3,10 @@
     %table
       %tr
         %td Queue:
-        %td= binding["queue"]
+        %td= binding["queue"]["name"]
       %tr
         %td Exchange:
-        %td= binding["exchange"]
+        %td= binding["exchange"]["name"]
       %tr  
-        %td From:
-        %td= binding["from_queue"]
+        %td Key:
+        %td= binding["key"]

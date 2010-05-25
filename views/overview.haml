@@ -6,19 +6,22 @@
       %td Applications
       %td
         %ul
-          -@control["status"][0]["applications"].each do |application|
-            %li=application
+          -@status["running_applications"].each do |application|
+            %li
+              %strong=application[0]
+              %br
+              ="#{application[1]} - #{application[2]}"
     %tr
       %td Nodes
       %td
         %ul
-          -@control["status"][0]["nodes"].each do |node|
+          -@status["nodes"].each do |node|
             %li=node
     %tr
       %td Running Nodes
       %td
         %ul
-          -@control["status"][0]["running_nodes"].each do |node|
+          -@status["running_nodes"].each do |node|
             %li=node
 
 .status
@@ -30,5 +33,6 @@
         %ul
           -@queues.each do |queue|
             %li(class="#{class_for_queue(queue)}")
+              %a(href="/queues/#{queue["name"]}/delete" class="ask")
+                %img(src="img/action_stop.gif" title="delete")
               #{queue["name"]} (#{queue["messages"]}/#{@message_threshold || 0})
-              %a(href="/queues/#{queue["name"]}/delete" class="ask") delete

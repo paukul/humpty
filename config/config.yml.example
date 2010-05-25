@@ -1,12 +1,7 @@
 local:
     rabbitmq:
         host: localhost
-    alice:
-        base_url: http://localhost
-        port: 9999
 remote:
     rabbitmq:
         host: remote.host
-    alice:
-        base_url: http://remote.host
-        port: 9999
+        cookie: thisIsYourRabbitmqServersErlangSecretCookie

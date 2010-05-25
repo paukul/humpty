@@ -21,14 +21,15 @@ module Humpty
     set :public, File.expand_path('../public', __FILE__)
     set :queue_threshold_file, 'config/queue_thresholds.yml'
     set :sessions, true
+    set :server, %w[mongrel thin webrick]
 
     before do
       set_server
     end
 
     get '/' do
-      @control = @server.control
       @queues = @server.queues
+      @status = @server.status
       haml :overview
     end
 
@@ -88,13 +89,10 @@ module Humpty
     end
 
     def set_server(server = nil)
-      @servers = Server.configurations.keys
-      session["server"] = server_name = server || params["server"] || session["server"] || @servers.first
-      begin
-        @server = Server.new(server_name)
-      rescue Server::ConfigurationException
-        set_server(@servers.first)
-      end
+      Server.initialize unless Server.initialized?
+      session["server"] = server_name = server || params["server"] || session["server"]
+      @servers = Server.servers
+      @server = Server[server_name]
     end
   end
 end
