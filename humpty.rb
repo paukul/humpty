@@ -49,7 +49,7 @@ module Humpty
     end
 
     get '/queues/:name/delete' do
-      carrot.queue(params[:name]).delete
+      @server.queue(params[:name]).delete
       redirect '/'
     end
 
@@ -66,15 +66,16 @@ module Humpty
       haml :exchanges
     end
 
-    def carrot
-      Carrot.new(:host => @server.configuration["rabbitmq"]["host"])
-    end
-
     helpers do
       include Sinatra::Partials
       def class_for_queue(queue)
         @message_threshold = queue_config[@server.id][queue["name"]].to_i rescue 0
-        @message_threshold < queue["messages"].to_i ? "critical_queue" : nil
+        current_amount = queue["messages"].to_i
+        if @message_threshold == 0 || @message_threshold >= current_amount
+          nil
+        else
+          "critical_queue"
+        end
       end
 
       def queue_config

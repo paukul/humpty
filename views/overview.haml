@@ -1,5 +1,5 @@
 %h1 Summary
-.status
+.status.summary
   %h2 General
   %table
     %tr
@@ -25,10 +25,15 @@
   %h2 Queues
   %table
     %tr
-      %td Queues:
+      %td #
+      %td Name
       %td
-        %ul
-          -@queues.each do |queue|
-            %li(class="#{class_for_queue(queue)}")
-              #{queue["name"]} (#{queue["messages"]}/#{@message_threshold || 0})
-              %a(href="/queues/#{queue["name"]}/delete" class="ask") delete
+    -@queues.each do |queue|
+      %tr(class="#{class_for_queue(queue)}")
+        %td
+          #{queue["messages"]}
+        %td
+          #{queue["name"]}
+        %td
+          %a(href="/queues/#{queue["name"]}/delete" class="ask")
+            %img{:src => "img/delete.png"}

@@ -12,7 +12,7 @@ module Humpty
 
     def queues
       requested_attributes = %w(name durable auto_delete messages_ready messages_unacknowledged messages_uncommitted messages acks_uncommitted consumers transactions memory)
-      get("/queues/root/#{requested_attributes.join('/')}")["queues"]
+      get("/queues/root/#{requested_attributes.join('/')}")["queues"].sort {|a,b| a["name"] <=> b["name"]}
     end
 
     def bindings
@@ -21,6 +21,10 @@ module Humpty
 
     def control
       get("/control")
+    end
+    
+    def queue(name)
+      bunny.queue(name)
     end
 
     def self.configurations
@@ -33,7 +37,7 @@ module Humpty
     end
 
     def exchanges
-      get("/exchanges")["exchanges"]
+      get("/exchanges")["exchanges"].sort {|a,b| a["name"] <=> b["name"]}
     end
 
     def configuration
@@ -55,6 +59,14 @@ module Humpty
         self.class.#{verb}(url, opts)
       end
       EVAL
+    end
+    
+    def bunny
+      @bunny ||= begin
+        b = Bunny.new(:host => configuration["rabbitmq"]["host"])
+        b.start
+        b
+      end
     end
   end
 end

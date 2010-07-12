@@ -1,4 +1,4 @@
 require 'humpty'
 use Rack::Lint
 
-run Humpty::App
+run Humpty::App.application

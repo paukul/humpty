@@ -184,7 +184,7 @@ form.config table td{
     padding: 5px;
 }
 
-.status table tr td:first-child{
+.summary table tr td:first-child{
     color: #999;
     padding-right: 10px;
     padding-left: 0px;
