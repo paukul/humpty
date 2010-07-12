@@ -100,4 +100,3 @@ module Humpty
   end
 end
 
-Humpty::App.run! :port => 4567 if $0 == __FILE__
