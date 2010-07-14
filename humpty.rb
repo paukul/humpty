@@ -53,6 +53,11 @@ module Humpty
       redirect '/'
     end
 
+    get '/queues/:name/purge' do
+      @server.queue(params[:name]).purge
+      redirect '/'
+    end
+
     post '/config' do
       queue_config.update(@server.id => params["queues"])
       File.open(options.queue_threshold_file, 'w') do |file|
