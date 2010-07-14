@@ -57,6 +57,12 @@ module Humpty
       @server.queue(params[:name]).purge
       redirect '/'
     end
+    
+    get '/queues/:name' do
+      @bindings = @server.bindings.select {|b| b["queue"] == params[:name]}
+      @queue = @server.queues.detect{|q| q["name"] == params[:name]}
+      haml :queue
+    end
 
     post '/config' do
       queue_config.update(@server.id => params["queues"])

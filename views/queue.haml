@@ -1,0 +1,6 @@
+.queue_info
+  %h2 Queue
+  = partial(:queue, :locals => {:queue => @queue})
+.bindings
+  %h2 Bindings
+  = partial(:binding, :collection => @bindings)

@@ -1,5 +1,5 @@
 %h1 Summary
-.status.summary
+.infoBox.summary
   %h2 General
   %table
     %tr
@@ -21,23 +21,24 @@
           -@control["status"][0]["running_nodes"].each do |node|
             %li=node
 
-.status
+.infoBox
   %h2 Queues
   %table
     %tr
       %td #
       %td Name
-      %td
-      %td
+      %td Options
     -@queues.each do |queue|
-      %tr(class="#{class_for_queue(queue)}")
+      %tr{:class => "#{class_for_queue(queue)}"}
         %td
           #{queue["messages"]}
         %td
-          #{queue["name"]}
+          %a{:href => "queues/#{queue["name"]}"}
+            #{queue["name"]}
         %td
-          %a(href="/queues/#{queue["name"]}/delete" class="ask")
+          %a{:href => "/queues/#{queue["name"]}"}
+            %img{:src => "img/magnifier.png", :alt => "purge queue #{queue["name"]}"}
+          %a{:href => "/queues/#{queue["name"]}/delete", :class => "ask"}
             %img{:src => "img/delete.png", :alt => "delete queue #{queue["name"]}"}
-        %td
-          %a(href="/queues/#{queue["name"]}/purge" class="ask")
+          %a{:href => "/queues/#{queue["name"]}/purge", :class => "ask"}
             %img{:src => "img/bin_closed.png", :alt => "purge queue #{queue["name"]}"}

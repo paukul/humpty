@@ -1,12 +1,1 @@
--@bindings.each do |binding|
-  %div.status
-    %table
-      %tr
-        %td Queue:
-        %td= binding["queue"]
-      %tr
-        %td Exchange:
-        %td= binding["exchange"]
-      %tr  
-        %td From:
-        %td= binding["from_queue"]
+= partial(:binding, :collection => @bindings)
