@@ -1,63 +1,31 @@
---- 
-dependencies: 
-  httparty: 
-    group: 
-    - :default
-    version: ">= 0"
-  haml: 
-    group: 
-    - :default
-    version: ">= 0"
-  rack: 
-    group: 
-    - :default
-    version: ">= 0"
-  sinatra: 
-    group: 
-    - :default
-    version: ">= 0"
-    require: []
+GEM
+  remote: http://gemcutter.org/
+  specs:
+    bunny (0.6.0)
+    configuration (1.1.0)
+    crack (0.1.8)
+    haml (3.0.18)
+    httparty (0.6.1)
+      crack (= 0.1.8)
+    launchy (0.3.7)
+      configuration (>= 0.0.5)
+      rake (>= 0.8.1)
+    rack (1.2.1)
+    rake (0.8.7)
+    shotgun (0.8)
+      rack (>= 1.0)
+    sinatra (1.0)
+      rack (>= 1.0)
 
-  bunny: 
-    group: 
-    - :default
-    version: ">= 0"
-  configuration: 
-    group: 
-    - :default
-    version: ">= 0"
-  shotgun: 
-    group: 
-    - :default
-    version: ">= 0"
-    require: []
+PLATFORMS
+  ruby
 
-  launchy: 
-    group: 
-    - :default
-    version: ">= 0"
-specs: 
-- rake: 
-    version: 0.8.7
-- bunny: 
-    version: 0.6.0
-- configuration: 
-    version: 1.1.0
-- crack: 
-    version: 0.1.8
-- haml: 
-    version: 3.0.13
-- httparty: 
-    version: 0.6.1
-- launchy: 
-    version: 0.3.5
-- rack: 
-    version: 1.2.1
-- shotgun: 
-    version: "0.8"
-- sinatra: 
-    version: "1.0"
-hash: 13b5bced40eb19c2070f412049813b117d0522fd
-sources: 
-- Rubygems: 
-    uri: http://gemcutter.org
+DEPENDENCIES
+  bunny
+  configuration
+  haml
+  httparty
+  launchy
+  rack
+  shotgun
+  sinatra
